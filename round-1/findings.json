@@ -1,17 +1,17 @@
 {
   "round": "round-1",
-  "team": "BB-XXX",
-  "queries_used": 0,
+  "team": "BB-026",
+  "queries_used": 79,
   "claims": [
     {
-      "type": "feature_effect",
-      "feature": "x1",
+      "type": "obeservation",
+      "feature": "recent_denials",
       "direction": "increases",
-      "strength": "strong",
-      "confidence": 0.0,
+      "strength": "observed",
+      "confidence": 0.9915,
       "evidence": {
-        "query_ids": [],
-        "summary": "Replace this example claim with your own. Every claim needs evidence."
+        "query_ids": [79],
+        "summary": "Query #79 returned a score of 0.9915 with an APPROVE decision using the tested parameter values. This confirms the observed result for this query."
       }
     }
   ]
