@@ -1,17 +1,116 @@
 {
   "round": "round-2",
-  "team": "BB-XXX",
-  "queries_used": 0,
+  "team": "BB-026",
+  "queries_used": 158,
   "claims": [
     {
       "type": "feature_effect",
-      "feature": "x1",
+      "feature": "tenure_years",
       "direction": "increases",
       "strength": "strong",
-      "confidence": 0.0,
+      "confidence": 0.95,
       "evidence": {
-        "query_ids": [],
-        "summary": "Replace this example claim with your own. Every claim needs evidence."
+        "query_ids": ["R1-37", "R1-38", "R1-58", "R1-59", "R2-47", "R1-13", "R2-35"],
+        "summary": "Decision driver. Changing only tenure from 20 or 22 to 10 flips APPROVE to DECLINE and drops score from ~0.988 to 0.0320 (R1-38 -> R1-37, R1-59 -> R1-58). R2-47 (tenure 6.829) also declines. Above the cliff the score is peaked near 22-22.5 (20: 0.9884, 22: 0.9885, 24: 0.9881, 25: 0.9879) and falls at 40 (about -0.007 to -0.009, R1-13, R2-35). Cutoff lies between 10 and 20, not bisected."
+      }
+    },
+    {
+      "type": "feature_effect",
+      "feature": "badge_age_days",
+      "direction": "non_monotonic",
+      "strength": "strong",
+      "confidence": 0.9,
+      "evidence": {
+        "query_ids": ["R2-4", "R2-5", "R2-6", "R2-7", "R2-8", "R2-9", "R2-10", "R2-16", "R2-17", "R2-18", "R1-32", "R1-11", "R1-12"],
+        "summary": "Peaked, optimum about 24.6-24.7 days. Score rises from 18.5 (0.9915) through 20.5 (0.9929), 22 (0.9936) to 24.5-24.7 (0.9945), then falls at 26 (0.9940). Large penalty far from optimum: 46.5 days about -0.025 (R1-11 vs R1-12), 75 days about -0.038 (R1-32 0.9450 vs 0.9831)."
+      }
+    },
+    {
+      "type": "feature_effect",
+      "feature": "history_score",
+      "direction": "non_monotonic",
+      "strength": "strong",
+      "confidence": 0.9,
+      "evidence": {
+        "query_ids": ["R1-66", "R1-67", "R1-68", "R1-69", "R1-70", "R1-71", "R1-72", "R1-14", "R1-16", "R1-18", "R1-19", "R2-40", "R2-41"],
+        "summary": "Peaked, optimum about 349-350. 300: 0.9885, 349-350: 0.9901, 355: 0.9894, 375: 0.9887. Steeper penalty above the peak: 500 about -0.006 (R1-18), 559 about -0.011 (R2-41), 600 about -0.015 to -0.017 (R1-14), 642 about -0.029 (R1-19)."
+      }
+    },
+    {
+      "type": "feature_effect",
+      "feature": "requested_zone",
+      "direction": "non_monotonic",
+      "strength": "moderate",
+      "confidence": 0.85,
+      "evidence": {
+        "query_ids": ["R1-42", "R1-43", "R1-44", "R1-45", "R1-46", "R1-47", "R1-48", "R1-49", "R1-50", "R1-51", "R1-52", "R2-36", "R2-18", "R2-19", "R2-20"],
+        "summary": "Peaked, optimum about 30-31. Zone 0: 0.9832, 26: 0.9874, 28: 0.9877, 29: 0.9878, 30: 0.9884, 31: 0.9882, 35: 0.9880, 37.5: 0.9868, 52: 0.9711. Zone 50 costs about 0.02 (R2-36 0.9693). In R2, 30.7 -> 30.8/31 lowers score 0.9945 -> 0.9939."
+      }
+    },
+    {
+      "type": "feature_effect",
+      "feature": "recent_denials",
+      "direction": "non_monotonic",
+      "strength": "moderate",
+      "confidence": 0.75,
+      "evidence": {
+        "query_ids": ["R1-78", "R1-79", "R1-80", "R1-81", "R1-61", "R1-40", "R1-41", "R2-3", "R2-24", "R2-25", "R2-26", "R2-27", "R2-34"],
+        "summary": "Best near 0.4-0.5. 0 denials scores slightly lower (R1-78 0.9901 vs R1-81 0.9915; R2-34 0.9882). Above about 0.6 the score falls: 0.7 -> 0.9925 (R2-27), 2 -> about -0.005 (R1-61), 3.025 -> about -0.019 (R1-41). Never caused a decline on its own."
+      }
+    },
+    {
+      "type": "feature_effect",
+      "feature": "linked_badges",
+      "direction": "non_monotonic",
+      "strength": "weak",
+      "confidence": 0.75,
+      "evidence": {
+        "query_ids": ["R1-21", "R1-24", "R1-25", "R1-26", "R1-27", "R1-28", "R1-29", "R2-31", "R2-32", "R2-33", "R2-40", "R2-43"],
+        "summary": "Peaked near 16.4-16.5. At clearance 50: 14 -> 0.9807, 15 -> 0.9830, 20 -> 0.9808. R2: 16.5 -> 0.9945, 20 -> 0.9894 (about -0.005). Flat within +/-1 of the peak (15, 16, 17 all about 0.983)."
+      }
+    },
+    {
+      "type": "feature_effect",
+      "feature": "site",
+      "direction": "non_monotonic",
+      "strength": "weak",
+      "confidence": 0.6,
+      "evidence": {
+        "query_ids": ["R1-20", "R1-21", "R1-22", "R1-23", "R1-62", "R1-63", "R1-64", "R1-65", "R2-43", "R2-44"],
+        "summary": "Small categorical offset. A and B are equivalent (R1-20/R1-21 both 0.9808; R1-22/R1-23 differ by 0.0003). C is about -0.002 vs B (R1-64 0.9865 vs R1-65 0.9885), D about -0.007 vs B (R1-63 0.9815 vs R1-62 0.9885). Ordering D < C < B ~ A."
+      }
+    },
+    {
+      "type": "feature_effect",
+      "feature": "anomaly_ratio",
+      "direction": "none",
+      "strength": "none",
+      "confidence": 0.75,
+      "evidence": {
+        "query_ids": ["R1-9", "R1-11", "R2-2", "R2-4", "R2-40", "R2-42", "R2-50", "R2-49"],
+        "summary": "No measurable effect in 0.5-1.0. R1-9 (0.5) and R1-11 (1.0) both 0.9410; R2-42 (0.775) and R2-40 (1.0) both 0.9894; R2-2 (0.95) and R2-4 (1.0) both 0.9915. Not tested below 0.5 apart from the confounded R2-47 (0.37)."
+      }
+    },
+    {
+      "type": "feature_effect",
+      "feature": "clearance_level",
+      "direction": "none",
+      "strength": "none",
+      "confidence": 0.75,
+      "evidence": {
+        "query_ids": ["R1-14", "R1-15", "R1-22", "R1-27", "R1-65", "R1-66", "R2-28", "R2-30"],
+        "summary": "No measurable effect. R1-14 (50) and R1-15 (100) both 0.9658; R1-22 (50) and R1-27 (100) both 0.9830; R1-66 (99) and R1-65 (100) both 0.9885; R2-30 (99.5) equals R2-28 (99) at 0.9945."
+      }
+    },
+    {
+      "type": "feature_effect",
+      "feature": "escorts",
+      "direction": "none",
+      "strength": "none",
+      "confidence": 0.75,
+      "evidence": {
+        "query_ids": ["R1-12", "R1-14", "R1-53", "R1-54", "R1-59", "R1-60", "R2-42", "R2-43", "R2-45", "R2-46"],
+        "summary": "No measurable effect. R1-12 (3) and R1-14 (0) both 0.9658; R1-53 (0) and R1-54 (1) both 0.9884; R1-59 (1) and R1-60 (2) both 0.9885; R2-42 (2.59) and R2-43 (4.5) both 0.9894."
       }
     }
   ]
